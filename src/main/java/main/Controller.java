@@ -2,8 +2,15 @@ package main.java.main;
 
 import main.java.singleton.Apiary;
 
+/**
+ * @author user
+ *
+ */
 public class Controller {
 
+    /**
+     * @param args
+     */
     public static void main(String[] args) {
         System.out.println("Design Patterns, SER 316, jshawcro");
 
