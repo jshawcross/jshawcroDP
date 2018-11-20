@@ -8,4 +8,6 @@ package main.java.singleton;
  */
 public class BeeHive {
 
+        private String name;
+        private int id;
 }

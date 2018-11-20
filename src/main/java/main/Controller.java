@@ -1,7 +1,6 @@
 package main.java.main;
 
 import main.java.singleton.Apiary;
-import main.java.singleton.BeeHive;
 
 public class Controller {
 
