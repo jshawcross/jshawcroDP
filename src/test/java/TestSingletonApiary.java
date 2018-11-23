@@ -16,7 +16,7 @@ import org.junit.Test;
  * @author Jason Shawcross
  *
  */
-public class TestApiary {
+public class TestSingletonApiary {
     
     /**
      * Method runs before each test to make sure that the singleton is reset.

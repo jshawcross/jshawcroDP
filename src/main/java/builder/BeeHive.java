@@ -3,10 +3,12 @@ package main.java.builder;
 public class BeeHive {
     
     /**
-     * @author user
+     * BeeHive class to store imformation about a BeeHive object.
+     * 
+     * @author Jason Shawcross
      *
      */
-    private static enum BeeType {
+    public static enum BeeType {
         Honey, Killer, Carpenter, Bumble, Tiny, Super;
     }
     
@@ -37,6 +39,8 @@ public class BeeHive {
     private int restModifier;
     
     /**
+     * Getter Method for id value.
+     * 
      * @return the id
      */
     public int getId() {
@@ -44,6 +48,8 @@ public class BeeHive {
     }
     
     /**
+     * Getter Method for locationX value.
+     * 
      * @return the xAxisLoc
      */
     public int getLocationX() {
@@ -51,6 +57,8 @@ public class BeeHive {
     }
 
     /**
+     * Getter Method for locationY value.
+     * 
      * @return the yAxisLoc
      */
     public int getLocationY() {
@@ -58,6 +66,8 @@ public class BeeHive {
     }
 
     /**
+     * Getter Method for type value.
+     * 
      * @return the type
      */
     public BeeType getType() {
@@ -65,6 +75,8 @@ public class BeeHive {
     }
     
     /**
+     * Getter Method for foodAmount value.
+     * 
      * @return the foodAmount
      */
     public int getFoodAmount() {
@@ -72,6 +84,8 @@ public class BeeHive {
     }
     
     /**
+     * Getter Method for eggAmount value.
+     * 
      * @return the eggAmount
      */
     public int getEggAmount() {
@@ -79,6 +93,8 @@ public class BeeHive {
     }
     
     /**
+     * Getter Method for roomAmount value.
+     * 
      * @return the roomAmount
      */
     public int getRoomAmount() {
@@ -86,6 +102,8 @@ public class BeeHive {
     }
     
     /**
+     * Getter Method for workRequired value.
+     * 
      * @return the workRequired
      */
     public int getWorkRequired() {
@@ -93,6 +111,8 @@ public class BeeHive {
     }
     
     /**
+     * Getter Method for foodCapacity value.
+     * 
      * @return the foodCapacity
      */
     public int getFoodCapacity() {
@@ -100,6 +120,8 @@ public class BeeHive {
     }
     
     /**
+     * Getter Method for eggCapacity value.
+     * 
      * @return the eggCapacity
      */
     public int getEggCapacity() {
@@ -107,6 +129,8 @@ public class BeeHive {
     }
     
     /**
+     * Getter Method for restCapacity value.
+     * 
      * @return the restCapacity
      */
     public int getRestCapacity() {
@@ -114,6 +138,8 @@ public class BeeHive {
     }
     
     /**
+     * Getter Method for foodModifier value.
+     * 
      * @return the foodModifier
      */
     public int getFoodModifier() {
@@ -121,6 +147,8 @@ public class BeeHive {
     }
     
     /**
+     * Getter Method for eggModifier value.
+     * 
      * @return the eggModifier
      */
     public int getEggModifier() {
@@ -128,10 +156,37 @@ public class BeeHive {
     }
     
     /**
+     * Getter Method for restModifier value.
+     * 
      * @return the restModifier
      */
     public int getRestModifier() {
         return restModifier;
+    }
+    
+    /** 
+     * toString method that overrides regular toString method.
+     * 
+     * @see java.lang.Object#toString()
+     */
+    public String toString() {
+        // Create string buffer
+        StringBuffer outBuffer =  new StringBuffer();
+        
+        // Append BeeHive info to buffer
+        outBuffer.append("BeeHive id: " + this.id + "\n");
+        outBuffer.append("Location: " + this.locationX + ", " + this.locationY + "\n");
+        outBuffer.append("Type: " + this.type + "\n");
+        outBuffer.append("Rooms: " + this.roomAmount + "\n");
+        outBuffer.append("Work until new room: " + this.workRequired + "\n");
+        outBuffer.append("Food: " + this.foodAmount + "/" + this.foodCapacity + "\n");
+        outBuffer.append("Eggs: " + this.eggAmount + "/" + this.eggCapacity + "\n");
+        outBuffer.append("Space for resting: " + this.restCapacity);
+        
+        // Set buffer to output String
+        String output = outBuffer.toString();
+        
+        return output;
     }
     
     /**
@@ -212,16 +267,19 @@ public class BeeHive {
         }
         
         /**
-         * @param inputType
+         * Method to set the type of the bee on the Builder object.
+         * 
+         * @param inputType BeeType, type of bee
          * @return
          */
         public BeeHiveBuilder setType(BeeType inputType) {
             this.type = inputType;
             
+            // Update modifiers based on Bee Type
             if (inputType == BeeType.Killer) {
-                this.restCapacity = 2;
+                this.restModifier = 2;
             } else if (inputType == BeeType.Carpenter) {
-                this.foodCapacity = 3;
+                this.foodModifier = 3;
             } else if (inputType == BeeType.Bumble) {
                 this.eggModifier = 1;
             } else if (inputType == BeeType.Tiny) {
@@ -244,7 +302,9 @@ public class BeeHive {
         }
         
         /**
-         * @param inputFood
+         * Method to set the foodAmount on the Builder object.
+         * 
+         * @param inputFood Integer, Amount of food to set for the BeeHive
          * @return
          */
         public BeeHiveBuilder setFoodAmount(int inputFood) {
@@ -253,7 +313,9 @@ public class BeeHive {
         }
         
         /**
-         * @param inputEgg
+         * Method to set the eggAmount on the Builder object.
+         * 
+         * @param inputEgg Integer, Amount of eggs to set for the BeeHive
          * @return
          */
         public BeeHiveBuilder setEggAmount(int inputEgg) {
@@ -262,16 +324,21 @@ public class BeeHive {
         }
         
         /**
-         * @param inputRoom
+         * Method to set the roomAmount on the Builder object.
+         * 
+         * @param inputRoom Integer, Amount of rooms to set for the BeeHive
          * @return
          */
         public BeeHiveBuilder setRoomAmount(int inputRoom) {
             this.roomAmount = inputRoom;
+            updateCapacity();
             return this;
         }
         
         /**
-         * @param inputWork
+         * Method to set the workRequired on the Builder object.
+         * 
+         * @param inputWork Integer, Amount of work required for a new room set for the BeeHive
          * @return
          */
         public BeeHiveBuilder setWorkRequired(int inputWork) {
@@ -280,6 +347,8 @@ public class BeeHive {
         }
         
         /**
+         * Method to build the BeeHive from the Builder object.
+         * 
          * @return
          */
         public BeeHive build() {
@@ -291,6 +360,7 @@ public class BeeHive {
          *  or the room amount is changed from default.
          */
         private void updateCapacity() {
+            // Use modifiers and number of rooms to determine BeeHive capacity
             this.foodCapacity = (FOODPERROOM + this.foodModifier) * this.roomAmount;
             this.eggCapacity = (EGGSPERROOM + this.eggModifier) * this.roomAmount;
             this.restCapacity = (RESTPERROOM + this.restModifier) * this.roomAmount;

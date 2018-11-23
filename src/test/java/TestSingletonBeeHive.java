@@ -6,7 +6,7 @@ import main.java.singleton.BeeHive;
 
 import org.junit.Test;
 
-public class TestBeeHive {
+public class TestSingletonBeeHive {
     
     /**
      * Test to make sure dummy beehive class works.

@@ -59,12 +59,8 @@ public class Controller {
         beeApiary.addBeeHive(hive4);
         System.out.println(beeApiary.countBeeHives());
         
-        // Factory Design Pattern section
-        System.out.println("\nFactory\n-------");
-        System.out.println("\nFactory\n-------");
-        System.out.println("\nFactory\n-------");
-
-        System.out.println("\nFactory\n-------");
+        // Builder Design Pattern section
+        System.out.println("Builder\n-------");
     }
 
 }
