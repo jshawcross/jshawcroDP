@@ -173,4 +173,18 @@ public class TestApiary {
         assertTrue(hive2 == null);
     }
     
+    /**
+     * Test the apiary toString method.
+     */
+    @Test
+    public void testToString() {
+        Apiary testApiary = Apiary.getInstance("Test");
+        BeeHive hive1 = new BeeHive(1);
+        BeeHive hive2 = new BeeHive(2);
+        testApiary.addBeeHive(hive1);
+        testApiary.addBeeHive(hive2);
+        System.out.println(testApiary.toString());
+        assertTrue(testApiary.toString().equals("Apiary name: Test\nCurrent Beehives:\n"
+                + "Beehive id: 1\nBeehive id: 2\n"));
+    }
 }

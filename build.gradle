@@ -7,6 +7,12 @@ apply plugin: 'java'
 
 mainClassName = 'main/java/main/Controller'
 
+compileJava.options.encoding = 'UTF-8'
+
+repositories {
+	mavenCentral()
+}
+
 ///////////////////////////////////////////////////////////////////////////
 // Configure Checkstyle
 ///////////////////////////////////////////////////////////////////////////
@@ -22,6 +28,7 @@ tasks.withType(Checkstyle) {
     xml.enabled = false
   }
 }
+
 checkstyle {
     toolVersion = "8.8"
 }
@@ -44,14 +51,12 @@ tasks.withType(com.github.spotbugs.SpotBugsTask) {
 	}
 }
 
-repositories {
-	mavenCentral()
-}
-
 test {
 	useJUnit()
 }
 
 dependencies {
-	compile 'junit:junit:4.12'
+	compile ('junit:junit:4.12')
 }
+
+
