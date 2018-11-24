@@ -8,7 +8,7 @@ public class BeeHive {
      * @author Jason Shawcross
      *
      */
-    public static enum BeeType {
+    public static enum BeeSpecies {
         Honey, Killer, Carpenter, Bumble, Tiny, Super;
     }
     
@@ -22,7 +22,7 @@ public class BeeHive {
     private int locationY;
         
     // Optional parameters
-    private BeeType type;
+    private BeeSpecies species;
     private int foodAmount;
     private int eggAmount;
     private int roomAmount;
@@ -66,12 +66,12 @@ public class BeeHive {
     }
 
     /**
-     * Getter Method for type value.
+     * Getter Method for species value.
      * 
      * @return the type
      */
-    public BeeType getType() {
-        return type;
+    public BeeSpecies getSpecies() {
+        return species;
     }
     
     /**
@@ -176,7 +176,7 @@ public class BeeHive {
         // Append BeeHive info to buffer
         outBuffer.append("BeeHive id: " + this.id + "\n");
         outBuffer.append("Location: " + this.locationX + ", " + this.locationY + "\n");
-        outBuffer.append("Type: " + this.type + "\n");
+        outBuffer.append("Species: " + this.species + "\n");
         outBuffer.append("Rooms: " + this.roomAmount + "\n");
         outBuffer.append("Work until new room: " + this.workRequired + "\n");
         outBuffer.append("Food: " + this.foodAmount + "/" + this.foodCapacity + "\n");
@@ -198,7 +198,7 @@ public class BeeHive {
         this.id = builder.id;
         this.locationX = builder.locationX;
         this.locationY = builder.locationY;
-        this.type = builder.type;
+        this.species = builder.species;
         this.foodAmount = builder.foodAmount;
         this.eggAmount = builder.eggAmount;
         this.roomAmount = builder.roomAmount;
@@ -224,7 +224,7 @@ public class BeeHive {
         private int locationY;
             
         // Optional parameters
-        private BeeType type;
+        private BeeSpecies species;
         private int foodAmount;
         private int eggAmount;
         private int roomAmount;
@@ -254,7 +254,7 @@ public class BeeHive {
             this.locationY = inputY;
             
             // Default parameters
-            this.type = BeeType.Honey;
+            this.species = BeeSpecies.Honey;
             this.foodAmount = 10;
             this.eggAmount = 0;
             this.roomAmount = 3;
@@ -263,6 +263,7 @@ public class BeeHive {
             this.eggModifier = 0;
             this.restModifier = 0;
             
+            // Set the capacities for the bee hive
             updateCapacity();
         }
         
@@ -272,21 +273,21 @@ public class BeeHive {
          * @param inputType BeeType, type of bee
          * @return
          */
-        public BeeHiveBuilder setType(BeeType inputType) {
-            this.type = inputType;
+        public BeeHiveBuilder setSpecies(BeeSpecies inputType) {
+            this.species = inputType;
             
             // Update modifiers based on Bee Type
-            if (inputType == BeeType.Killer) {
+            if (inputType == BeeSpecies.Killer) {
                 this.restModifier = 2;
-            } else if (inputType == BeeType.Carpenter) {
+            } else if (inputType == BeeSpecies.Carpenter) {
                 this.foodModifier = 3;
-            } else if (inputType == BeeType.Bumble) {
+            } else if (inputType == BeeSpecies.Bumble) {
                 this.eggModifier = 1;
-            } else if (inputType == BeeType.Tiny) {
+            } else if (inputType == BeeSpecies.Tiny) {
                 this.foodModifier = -3;
                 this.eggModifier = -1;
                 this.restModifier = 2;
-            } else if (inputType == BeeType.Super) {
+            } else if (inputType == BeeSpecies.Super) {
                 this.foodModifier = 2;
                 this.eggModifier = 1;
                 this.restModifier = 1;
@@ -296,6 +297,7 @@ public class BeeHive {
                 this.restModifier = 0;
             }
             
+            // Modifiers have been updated so capacities need to be updated
             updateCapacity();
             
             return this;
@@ -331,7 +333,10 @@ public class BeeHive {
          */
         public BeeHiveBuilder setRoomAmount(int inputRoom) {
             this.roomAmount = inputRoom;
+            
+            // Rooms have changed so capacities needs to be updated
             updateCapacity();
+            
             return this;
         }
         

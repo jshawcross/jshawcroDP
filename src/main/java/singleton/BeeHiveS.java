@@ -6,11 +6,11 @@ package main.java.singleton;
  * @author Jason Shawcross
  *
  */
-public class BeeHive {
+public class BeeHiveS {
 
     private int id;
 
-    public BeeHive(int input) {
+    public BeeHiveS(int input) {
         id = input;
     }
         

@@ -2,7 +2,7 @@ package test.java;
 
 import static org.junit.Assert.assertTrue;
 
-import main.java.singleton.BeeHive;
+import main.java.singleton.BeeHiveS;
 
 import org.junit.Test;
 
@@ -13,8 +13,8 @@ public class TestSingletonBeeHive {
      */
     @Test
     public void hivesTest() {
-        BeeHive hive1 = new BeeHive(1);
-        BeeHive hive2 = new BeeHive(2);
+        BeeHiveS hive1 = new BeeHiveS(1);
+        BeeHiveS hive2 = new BeeHiveS(2);
         assertTrue(hive1.getId() == 1);
         assertTrue(hive2.getId() == 2);
     }

@@ -13,7 +13,7 @@ public class Apiary {
     private static Apiary apiaryInstance = null;
     
     private String name;
-    private Vector<BeeHive> hives;
+    private Vector<BeeHiveS> hives;
 
     /**
      * Private constructor used to create singleton instance.
@@ -22,7 +22,7 @@ public class Apiary {
      */
     private Apiary(String inputName) {
         name = inputName;
-        hives = new Vector<BeeHive>();
+        hives = new Vector<BeeHiveS>();
     }
     
     /**
@@ -63,7 +63,7 @@ public class Apiary {
      * 
      * @param input BeeHive, Object to add to the vector
      */
-    public boolean addBeeHive(BeeHive input) {
+    public boolean addBeeHive(BeeHiveS input) {
         boolean exists = false;
         boolean wasAdded = false;
         
@@ -105,8 +105,8 @@ public class Apiary {
      * @param input Integer, id number of BeeHive to return
      * @return BeeHive
      */
-    public BeeHive getBeeHive(int input) {
-        BeeHive output =  new BeeHive(-1);
+    public BeeHiveS getBeeHive(int input) {
+        BeeHiveS output =  new BeeHiveS(-1);
         
         for (int i = 0; i < hives.size(); i++) {
             if (hives.elementAt(i).getId() == input) {

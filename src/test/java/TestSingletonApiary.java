@@ -5,7 +5,7 @@ import static org.junit.Assert.assertTrue;
 import java.lang.reflect.Field;
 
 import main.java.singleton.Apiary;
-import main.java.singleton.BeeHive;
+import main.java.singleton.BeeHiveS;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -82,7 +82,7 @@ public class TestSingletonApiary {
     @Test
     public void addHive() {
         Apiary testApiary = Apiary.getInstance("Test");
-        BeeHive hive1 = new BeeHive(1);
+        BeeHiveS hive1 = new BeeHiveS(1);
         assertTrue(testApiary.addBeeHive(hive1));
     }
     
@@ -92,8 +92,8 @@ public class TestSingletonApiary {
     @Test
     public void add2Hives() {
         Apiary testApiary = Apiary.getInstance("Test");
-        BeeHive hive1 = new BeeHive(1);
-        BeeHive hive2 = new BeeHive(2);
+        BeeHiveS hive1 = new BeeHiveS(1);
+        BeeHiveS hive2 = new BeeHiveS(2);
         assertTrue(testApiary.addBeeHive(hive1));
         assertTrue(testApiary.addBeeHive(hive2));
     }
@@ -104,7 +104,7 @@ public class TestSingletonApiary {
     @Test
     public void addDupHive() {
         Apiary testApiary = Apiary.getInstance("Test");
-        BeeHive hive1 = new BeeHive(1);
+        BeeHiveS hive1 = new BeeHiveS(1);
         testApiary.addBeeHive(hive1);
         assertTrue(!testApiary.addBeeHive(hive1));
     }
@@ -115,8 +115,8 @@ public class TestSingletonApiary {
     @Test
     public void removeHive() {
         Apiary testApiary = Apiary.getInstance("Test");
-        BeeHive hive1 = new BeeHive(1);
-        BeeHive hive2 = new BeeHive(2);
+        BeeHiveS hive1 = new BeeHiveS(1);
+        BeeHiveS hive2 = new BeeHiveS(2);
         testApiary.addBeeHive(hive1);
         testApiary.addBeeHive(hive2);
         assertTrue(testApiary.removeBeeHive(1));
@@ -128,8 +128,8 @@ public class TestSingletonApiary {
     @Test
     public void removeHiveNoExist() {
         Apiary testApiary = Apiary.getInstance("Test");
-        BeeHive hive1 = new BeeHive(1);
-        BeeHive hive2 = new BeeHive(2);
+        BeeHiveS hive1 = new BeeHiveS(1);
+        BeeHiveS hive2 = new BeeHiveS(2);
         testApiary.addBeeHive(hive1);
         testApiary.addBeeHive(hive2);
         assertTrue(!testApiary.removeBeeHive(4));
@@ -141,8 +141,8 @@ public class TestSingletonApiary {
     @Test
     public void countHives() {
         Apiary testApiary = Apiary.getInstance("Test");
-        BeeHive hive1 = new BeeHive(1);
-        BeeHive hive2 = new BeeHive(2);
+        BeeHiveS hive1 = new BeeHiveS(1);
+        BeeHiveS hive2 = new BeeHiveS(2);
         testApiary.addBeeHive(hive1);
         testApiary.addBeeHive(hive2);
         assertTrue(testApiary.countBeeHives() == 2);
@@ -154,9 +154,9 @@ public class TestSingletonApiary {
     @Test
     public void getHive() {
         Apiary testApiary = Apiary.getInstance("Test");
-        BeeHive hive1 = new BeeHive(1);
+        BeeHiveS hive1 = new BeeHiveS(1);
         testApiary.addBeeHive(hive1);
-        BeeHive hive2 = testApiary.getBeeHive(1);
+        BeeHiveS hive2 = testApiary.getBeeHive(1);
         assertTrue(hive2.toString().equals("Beehive id: 1"));
     }
     
@@ -166,9 +166,9 @@ public class TestSingletonApiary {
     @Test
     public void getHiveNoExist() {
         Apiary testApiary = Apiary.getInstance("Test");
-        BeeHive hive1 = new BeeHive(1);
+        BeeHiveS hive1 = new BeeHiveS(1);
         testApiary.addBeeHive(hive1);
-        BeeHive hive2 = testApiary.getBeeHive(4);
+        BeeHiveS hive2 = testApiary.getBeeHive(4);
         //System.out.println(hive2.toString());
         assertTrue(hive2 == null);
     }
@@ -179,8 +179,8 @@ public class TestSingletonApiary {
     @Test
     public void testToString() {
         Apiary testApiary = Apiary.getInstance("Test");
-        BeeHive hive1 = new BeeHive(1);
-        BeeHive hive2 = new BeeHive(2);
+        BeeHiveS hive1 = new BeeHiveS(1);
+        BeeHiveS hive2 = new BeeHiveS(2);
         testApiary.addBeeHive(hive1);
         testApiary.addBeeHive(hive2);
         System.out.println(testApiary.toString());

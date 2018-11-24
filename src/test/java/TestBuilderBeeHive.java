@@ -3,7 +3,7 @@ package test.java;
 import static org.junit.Assert.assertTrue;
 
 import main.java.builder.BeeHive;
-import main.java.builder.BeeHive.BeeType;
+import main.java.builder.BeeHive.BeeSpecies;
 
 import org.junit.Test;
 
@@ -17,7 +17,7 @@ public class TestBuilderBeeHive {
         BeeHive hive = new BeeHive.BeeHiveBuilder(1, 2, 3).build();
         assertTrue(hive.toString().equals("BeeHive id: 1\n"
                 + "Location: 2, 3\n"
-                + "Type: Honey\n"
+                + "Species: Honey\n"
                 + "Rooms: 3\n"
                 + "Work until new room: 100\n"
                 + "Food: 10/30\n"
@@ -58,7 +58,7 @@ public class TestBuilderBeeHive {
     @Test
     public void getTypeTest() {
         BeeHive hive = new BeeHive.BeeHiveBuilder(1, 2, 3).build();
-        assertTrue(hive.getType() == BeeType.Honey);
+        assertTrue(hive.getSpecies() == BeeSpecies.Honey);
     }
     
     /**
@@ -195,8 +195,8 @@ public class TestBuilderBeeHive {
      */
     @Test
     public void setTypeTest() {
-        BeeHive hive = new BeeHive.BeeHiveBuilder(1, 2, 3).setType(BeeType.Super).build();
-        assertTrue(hive.getType() == BeeType.Super); 
+        BeeHive hive = new BeeHive.BeeHiveBuilder(1, 2, 3).setSpecies(BeeSpecies.Super).build();
+        assertTrue(hive.getSpecies() == BeeSpecies.Super); 
         assertTrue(hive.getFoodModifier() == 2);
         assertTrue(hive.getEggModifier() == 1);
         assertTrue(hive.getRestModifier() == 1);
@@ -211,7 +211,7 @@ public class TestBuilderBeeHive {
     @Test
     public void allBuilderSetTest() {
         BeeHive hive = new BeeHive.BeeHiveBuilder(1, 2, 3)
-                .setType(BeeType.Tiny)
+                .setSpecies(BeeSpecies.Tiny)
                 .setFoodAmount(20)
                 .setEggAmount(2)
                 .setRoomAmount(5)
@@ -220,7 +220,7 @@ public class TestBuilderBeeHive {
         System.out.println(hive);
         assertTrue(hive.toString().equals("BeeHive id: 1\n"
                 + "Location: 2, 3\n"
-                + "Type: Tiny\n"
+                + "Species: Tiny\n"
                 + "Rooms: 5\n"
                 + "Work until new room: 25\n"
                 + "Food: 20/35\n"
