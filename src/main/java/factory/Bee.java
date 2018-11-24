@@ -6,7 +6,7 @@ public abstract class Bee {
         Nothing, Search, Forage, Rest, Attack, Return, Lay, Hatch, Build;
     }
     
-    public static enum BeeSpecies {
+    public static enum BeeSpeciesF {
         Honey, Killer, Carpenter, Bumble, Tiny, Super;
     }
     
@@ -14,7 +14,7 @@ public abstract class Bee {
     protected int id;
     protected int beeHiveId;
     protected BeeState currentState;
-    protected BeeSpecies species;
+    protected BeeSpeciesF species;
     
     // Bee Stats
     protected int attack;
@@ -64,7 +64,7 @@ public abstract class Bee {
      * 
      * @return
      */
-    public BeeSpecies getSpecies() {
+    public BeeSpeciesF getSpecies() {
         return this.species;
     }
     
@@ -140,8 +140,22 @@ public abstract class Bee {
      * @see java.lang.Object#toString()
      */
     public String toString() {
+        // Create string buffer
+        StringBuffer outBuffer =  new StringBuffer();
         
-        return " ";
+        // Append BeeHive info to buffer
+        outBuffer.append("Bee id: " + id + "\n");
+        outBuffer.append("BeeHive id: " + beeHiveId + "\n");
+        outBuffer.append("Species: " + species + "\n");
+        outBuffer.append("Type: " + this.getType() + "\n");
+        outBuffer.append("Attack: " + attack + "\n");
+        outBuffer.append("Health: " + health + "/" + healthMax + "\n");
+        outBuffer.append("Stamina: " + stamina + "/" + staminaMax);
+        
+        // Set buffer to output String
+        String output = outBuffer.toString();
+        
+        return output;
     }
     
 }

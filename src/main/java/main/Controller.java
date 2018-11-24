@@ -2,8 +2,12 @@ package main.java.main;
 
 import main.java.builder.BeeHive;
 import main.java.builder.BeeHive.BeeSpecies;
+import main.java.factory.Bee;
+import main.java.factory.Bee.BeeSpeciesF;
+import main.java.factory.BeeFactory;
 import main.java.singleton.Apiary;
 import main.java.singleton.BeeHiveS;
+
 
 /**
  * Controller used to demonstrate design patterns.
@@ -80,7 +84,56 @@ public class Controller {
                 .setRoomAmount(5)
                 .setWorkRequired(25)
                 .build();
-        System.out.println("Output of BeeHive status: \n" + hiveb3.toString());
-    }
+        System.out.println("Output of BeeHive status: \n" + hiveb3.toString() + "\n");
+        
+        // Factory Design Pattern section
+        System.out.println("Factory\n-------");
+        System.out.println("Creating a queen bee of species Honey, id 1, BeeHive id 1");
+        Bee bee1 = BeeFactory.getBee("Queen", 1, 1, BeeSpeciesF.Honey);
+        System.out.println(bee1.toString() + "\n");
+        
+        System.out.println("Having queen bee, id 1, make 25 actions");
+        for (int i = 1; i < 6; i++) {
+            for (int j = 1; j < 6; j++) {
+                System.out.print(bee1.doAction() + " ");
+            }
+            System.out.print("\n");
+        }
+        
+        System.out.println("\nCreating a worker bee of species Carpenter, id 2, BeeHive id 2");
+        Bee bee2 = BeeFactory.getBee("Worker", 2, 2, BeeSpeciesF.Carpenter);
+        System.out.println(bee2.toString() + "\n");
+        
+        System.out.println("Having worker bee, id 2, make 25 actions");
+        for (int i = 1; i < 6; i++) {
+            for (int j = 1; j < 6; j++) {
+                System.out.print(bee2.doAction() + " ");
+            }
+            System.out.print("\n");
+        }
+        
+        System.out.println("\nCreating a warrior bee of species Killer, id 3, BeeHive id 3");
+        Bee bee3 = BeeFactory.getBee("Warrior", 3, 3, BeeSpeciesF.Killer);
+        System.out.println(bee3.toString() + "\n");
+        
+        System.out.println("Having warrior bee, id 3, make 25 actions");
+        for (int i = 1; i < 6; i++) {
+            for (int j = 1; j < 6; j++) {
+                System.out.print(bee3.doAction() + " ");
+            }
+            System.out.print("\n");
+        }
 
+        System.out.println("\nCreating a drone bee of species Super, id 4, BeeHive id 4");
+        Bee bee4 = BeeFactory.getBee("Drone", 4, 4, BeeSpeciesF.Super);
+        System.out.println(bee4.toString() + "\n");
+        
+        System.out.println("Having drone bee, id 4, make 25 actions");
+        for (int i = 1; i < 6; i++) {
+            for (int j = 1; j < 6; j++) {
+                System.out.print(bee4.doAction() + " ");
+            }
+            System.out.print("\n");
+        }
+    }
 }

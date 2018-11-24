@@ -1,23 +1,27 @@
 package main.java.factory;
 
-public class Queen extends Bee {
+import java.util.Random;
+
+public class Drone extends Bee {
 
     // Stat constants
-    private static final int DEFAULT_ATTACK = 15;
-    private static final int DEFAULT_HEALTH = 50;
-    private static final int DEFAULT_STAMINA = 20;
-    private static final int BONUS_ATTACK = 5;
-    private static final int BONUS_HEALTH = 15;
-    private static final int BONUS_STAMINA = 8;
+    private static final int DEFAULT_ATTACK = 5;
+    private static final int DEFAULT_HEALTH = 5;
+    private static final int DEFAULT_STAMINA = 30;
+    private static final int BONUS_ATTACK = 2;
+    private static final int BONUS_HEALTH = 2;
+    private static final int BONUS_STAMINA = 6;
+    
+    private Random rdm = new Random();
     
     /**
-     * Queen sub-class of Bee class.
+     * Drone sub-class of Bee class.
      * 
      * @param inputId Integer, id to set on bee
      * @param inputHiveId Integer, hiveId to set on bee
      * @param inputSpecies BeeSpecies, species to set on bee
      */
-    public Queen(int inputId, int inputHiveId, BeeSpeciesF inputSpecies) {
+    public Drone(int inputId, int inputHiveId, BeeSpeciesF inputSpecies) {
         // Set bee information
         this.id = inputId;
         this.beeHiveId = inputHiveId;
@@ -59,8 +63,8 @@ public class Queen extends Bee {
 
     @Override
     public void setState(BeeState input) {
-        // if state is a valid state for Queen then change
-        if (input == BeeState.Nothing || input == BeeState.Lay || input == BeeState.Rest) {
+        if (input == BeeState.Nothing || input == BeeState.Search || input == BeeState.Forage 
+                || input == BeeState.Return || input == BeeState.Rest) {
             this.currentState = input;
         }
     }
@@ -71,25 +75,44 @@ public class Queen extends Bee {
         
         // Actions done based on current state
         if (currentState == BeeState.Nothing) {
-            currentState = BeeState.Lay;
-        } else if (currentState == BeeState.Lay) {
+            currentState = BeeState.Search;
+        } else if (currentState == BeeState.Search) {
             stamina = stamina - 1;
-            output = "+egg";
+            output = "search";
+            // If not out of stamina keeps searching unless food is found
             if (stamina == 0) {
-                currentState = BeeState.Rest;
-            }   
+                currentState = BeeState.Return;
+            } else {
+                if (rdm.nextBoolean()) {
+                    currentState = BeeState.Forage;
+                }
+            }
+        } else if (currentState == BeeState.Forage) {
+            stamina = stamina - 1;
+            output = "+food";
+            // If not out of stamina searches for more food
+            if (stamina == 0) {
+                currentState = BeeState.Return;
+            } else {
+                if (rdm.nextBoolean()) {
+                    currentState = BeeState.Search;
+                }
+            }
+        } else if (currentState == BeeState.Return) {
+            output = "return";
+            currentState = BeeState.Rest;
         } else if (currentState == BeeState.Rest) {
             stamina = staminaMax;
-            currentState = BeeState.Lay;
+            currentState = BeeState.Search;
             output = "-food";
-        }
+        } 
         
         return output;
     }
 
     @Override
     public String getType() {
-        return "Queen";
+        return "Drone";
     }
 
 }

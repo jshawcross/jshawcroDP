@@ -12,7 +12,7 @@ public class Worker extends Bee {
     private static final int BONUS_HEALTH = 2;
     private static final int BONUS_STAMINA = 10;
     
-    private Random rdm;
+    private Random rdm = new Random();
     
     /**
      * Worker sub-class of Bee class.
@@ -21,7 +21,7 @@ public class Worker extends Bee {
      * @param inputHiveId Integer, hiveId to set on bee
      * @param inputSpecies BeeSpecies, species to set on bee
      */
-    public Worker(int inputId, int inputHiveId, BeeSpecies inputSpecies) {
+    public Worker(int inputId, int inputHiveId, BeeSpeciesF inputSpecies) {
         // Set bee information
         this.id = inputId;
         this.beeHiveId = inputHiveId;
@@ -34,20 +34,20 @@ public class Worker extends Bee {
         int bonusStamina = 0;
         
         // Set bonus based on species
-        if (species == BeeSpecies.Killer) {
+        if (species == BeeSpeciesF.Killer) {
             bonusAttack = BONUS_ATTACK;
             bonusStamina = -BONUS_STAMINA;
-        } else if (species == BeeSpecies.Carpenter) {
+        } else if (species == BeeSpeciesF.Carpenter) {
             bonusHealth = -BONUS_HEALTH;
             bonusStamina = BONUS_STAMINA;
-        } else if (species == BeeSpecies.Bumble) {
+        } else if (species == BeeSpeciesF.Bumble) {
             bonusAttack = -BONUS_ATTACK;
             bonusHealth = BONUS_HEALTH;
-        } else if (species == BeeSpecies.Tiny) {
+        } else if (species == BeeSpeciesF.Tiny) {
             bonusAttack = -BONUS_ATTACK;
             bonusHealth = -BONUS_HEALTH;
             bonusStamina = -BONUS_STAMINA;
-        } else if (species == BeeSpecies.Super) {
+        } else if (species == BeeSpeciesF.Super) {
             bonusAttack = BONUS_ATTACK;
             bonusHealth = BONUS_HEALTH;
             bonusStamina = BONUS_STAMINA;
@@ -63,14 +63,15 @@ public class Worker extends Bee {
 
     @Override
     public void setState(BeeState input) {
-        if (input == BeeState.Nothing || input == BeeState.Lay || input == BeeState.Rest) {
+        if (input == BeeState.Nothing || input == BeeState.Build 
+                || input == BeeState.Hatch || input == BeeState.Rest) {
             this.currentState = input;
         }
     }
 
     @Override
     public String doAction() {
-        String output = "nothing";
+        String output = "Nothing";
         
         // Actions done based on current state
         if (currentState == BeeState.Nothing) {
@@ -81,7 +82,6 @@ public class Worker extends Bee {
                 currentState = BeeState.Hatch;
             }
         } else if (currentState == BeeState.Build) {
-            System.out.println("Worker builds on a new room");
             stamina = stamina - 1;
             output = "+work";
             // If not out of stamina then alternate to hatch
@@ -91,7 +91,6 @@ public class Worker extends Bee {
                 currentState = BeeState.Hatch;
             }
         } else if (currentState == BeeState.Hatch) {
-            System.out.println("Worker hatches egg");
             stamina = stamina - 1;
             output = "-egg";
             // If not out of stamina then alternate to build
@@ -101,7 +100,6 @@ public class Worker extends Bee {
                 currentState = BeeState.Build;
             }
         } else if (currentState == BeeState.Rest) {
-            System.out.println("Worker rests");
             stamina = staminaMax;
             // After resting, randomly choose next action
             if (rdm.nextBoolean()) {
