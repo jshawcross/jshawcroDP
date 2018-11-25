@@ -7,7 +7,7 @@ import main.java.builder.BeeHive.BeeSpecies;
 
 import org.junit.Test;
 
-public class TestBuilderBeeHive {
+public class TestBuilder {
 
     /**
      * Test creation of a hive object.
@@ -217,7 +217,6 @@ public class TestBuilderBeeHive {
                 .setRoomAmount(5)
                 .setWorkRequired(25)
                 .build();
-        System.out.println(hive);
         assertTrue(hive.toString().equals("BeeHive id: 1\n"
                 + "Location: 2, 3\n"
                 + "Species: Tiny\n"

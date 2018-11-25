@@ -16,8 +16,8 @@ import org.junit.Test;
  * @author Jason Shawcross
  *
  */
-public class TestSingletonApiary {
-    
+public class TestSingleton {
+      
     /**
      * Method runs before each test to make sure that the singleton is reset.
      * 
@@ -32,6 +32,17 @@ public class TestSingletonApiary {
         Field instance = Apiary.class.getDeclaredField("apiaryInstance");
         instance.setAccessible(true);
         instance.set(null, null);
+    }
+    
+    /**
+     * Test to make sure dummy beehive class works.
+     */
+    @Test
+    public void dummyBeeHive() {
+        BeeHiveS hive1 = new BeeHiveS(1);
+        BeeHiveS hive2 = new BeeHiveS(2);
+        assertTrue(hive1.getId() == 1);
+        assertTrue(hive2.getId() == 2);
     }
     
     /**
@@ -169,7 +180,6 @@ public class TestSingletonApiary {
         BeeHiveS hive1 = new BeeHiveS(1);
         testApiary.addBeeHive(hive1);
         BeeHiveS hive2 = testApiary.getBeeHive(4);
-        //System.out.println(hive2.toString());
         assertTrue(hive2 == null);
     }
     
@@ -183,7 +193,6 @@ public class TestSingletonApiary {
         BeeHiveS hive2 = new BeeHiveS(2);
         testApiary.addBeeHive(hive1);
         testApiary.addBeeHive(hive2);
-        System.out.println(testApiary.toString());
         assertTrue(testApiary.toString().equals("Apiary name: Test\nCurrent Beehives:\n"
                 + "Beehive id: 1\nBeehive id: 2\n"));
     }
