@@ -59,4 +59,12 @@ dependencies {
 	compile ('junit:junit:4.12')
 }
 
+task fatJar(type: Jar) {
+    manifest {
+        attributes 'Main-Class': 'main.java.main.Controller'
+    }
+    baseName = 'jshawcroDP'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
 
