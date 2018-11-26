@@ -107,13 +107,18 @@ public class Apiary {
      */
     public BeeHiveS getBeeHive(int input) {
         BeeHiveS output =  new BeeHiveS(-1);
+        boolean found = false;
         
         for (int i = 0; i < hives.size(); i++) {
             if (hives.elementAt(i).getId() == input) {
+                System.out.println(hives.elementAt(i).getId() + "/" + input);
                 output = hives.elementAt(i);
-            } else {
-                output = null;
+                found = true;
             }
+        }
+        
+        if (!found) {
+            output = null;
         }
         
         return output;

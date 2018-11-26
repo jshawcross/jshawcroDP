@@ -2,6 +2,12 @@ package main.java.factory;
 
 import java.util.Random;
 
+/**
+ * Worker bee type class that extends Bee.
+ * 
+ * @author Jason Shawcross
+ *
+ */
 public class Worker extends Bee {
 
     // Stat constants

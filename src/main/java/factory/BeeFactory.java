@@ -2,6 +2,12 @@ package main.java.factory;
 
 import main.java.factory.Bee.BeeSpeciesF;
 
+/**
+ * Factory class to create bees of different types.
+ * 
+ * @author Jason Shawcross
+ *
+ */
 public class BeeFactory {
 
     /**

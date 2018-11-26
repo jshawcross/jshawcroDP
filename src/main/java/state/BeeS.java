@@ -1,7 +1,7 @@
 package main.java.state;
 
 /**
- * Bee class for the State design pattern.
+ * Bee class that implements state for the State design pattern.
  * 
  * @author Jason Shawcross
  *

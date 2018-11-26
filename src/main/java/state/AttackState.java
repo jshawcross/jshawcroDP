@@ -1,5 +1,11 @@
 package main.java.state;
 
+/**
+ * Attack state class.
+ * 
+ * @author Jason Shawcross
+ *
+ */
 public class AttackState implements BeeState {
 
     /**

@@ -1,5 +1,11 @@
 package main.java.state;
 
+/**
+ * Build state class.
+ * 
+ * @author Jason Shawcross
+ *
+ */
 public class BuildState implements BeeState {
 
     /**

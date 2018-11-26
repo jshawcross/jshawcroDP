@@ -1,5 +1,11 @@
 package main.java.state;
 
+/**
+ * Return state class.
+ * 
+ * @author Jason Shawcross
+ *
+ */
 public class ReturnState implements BeeState {
 
     /**

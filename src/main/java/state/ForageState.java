@@ -2,6 +2,12 @@ package main.java.state;
 
 import java.util.Random;
 
+/**
+ * Forage state class.
+ * 
+ * @author Jason Shawcross
+ *
+ */
 public class ForageState implements BeeState {
 
     private Random rdm = new Random();

@@ -1,5 +1,11 @@
 package main.java.state;
 
+/**
+ * Gather state class.
+ * 
+ * @author Jason Shawcross
+ *
+ */
 public class GatherState implements BeeState {
 
     /**

@@ -2,6 +2,12 @@ package main.java.state;
 
 import java.util.Random;
 
+/**
+ * Search state class.
+ * 
+ * @author Jason Shawcross
+ *
+ */
 public class SearchState implements BeeState {
 
     private Random rdm = new Random();

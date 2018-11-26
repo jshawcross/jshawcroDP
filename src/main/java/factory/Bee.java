@@ -143,7 +143,7 @@ public abstract class Bee {
         // Create string buffer
         StringBuffer outBuffer =  new StringBuffer();
         
-        // Append BeeHive info to buffer
+        // Append Bee info to buffer
         outBuffer.append("Bee id: " + id + "\n");
         outBuffer.append("BeeHive id: " + beeHiveId + "\n");
         outBuffer.append("Species: " + species + "\n");

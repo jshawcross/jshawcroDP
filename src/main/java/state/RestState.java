@@ -1,5 +1,11 @@
 package main.java.state;
 
+/**
+ * Rest state class.
+ * 
+ * @author Jason Shawcross
+ *
+ */
 public class RestState implements BeeState {
 
     /**

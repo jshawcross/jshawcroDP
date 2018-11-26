@@ -2,6 +2,12 @@ package main.java.factory;
 
 import java.util.Random;
 
+/**
+ * Drone bee type class that extends Bee.
+ * 
+ * @author Jason Shawcross
+ *
+ */
 public class Drone extends Bee {
 
     // Stat constants

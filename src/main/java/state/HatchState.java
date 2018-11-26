@@ -1,5 +1,11 @@
 package main.java.state;
 
+/**
+ * Hatch state class.
+ * 
+ * @author Jason Shawcross
+ *
+ */
 public class HatchState implements BeeState {
 
     /**

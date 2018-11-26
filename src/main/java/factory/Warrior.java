@@ -2,6 +2,12 @@ package main.java.factory;
 
 import java.util.Random;
 
+/**
+ * Warrior bee type class that extends Bee.
+ * 
+ * @author Jason Shawcross
+ *
+ */
 public class Warrior extends Bee {
 
     // Stat constants

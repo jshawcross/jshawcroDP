@@ -1,5 +1,11 @@
 package main.java.state;
 
+/**
+ * Lay state class.
+ * 
+ * @author Jason Shawcross
+ *
+ */
 public class LayState implements BeeState {
 
     /**

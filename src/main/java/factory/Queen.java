@@ -1,5 +1,11 @@
 package main.java.factory;
 
+/**
+ * Queen bee type class that extends Bee.
+ * 
+ * @author Jason Shawcross
+ *
+ */
 public class Queen extends Bee {
 
     // Stat constants

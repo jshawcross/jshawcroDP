@@ -1,7 +1,5 @@
 package main.java.main;
 
-import static org.junit.Assert.assertTrue;
-
 import main.java.builder.BeeHive;
 import main.java.builder.BeeHive.BeeSpecies;
 import main.java.factory.Bee;
